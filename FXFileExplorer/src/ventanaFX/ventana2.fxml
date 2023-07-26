@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+
+<VBox prefHeight="708.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanaFX.FileExplorerController">
+  <children>
+    <MenuBar nodeOrientation="LEFT_TO_RIGHT" useSystemMenuBar="true" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" pickOnBounds="false" prefHeight="484.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Label layoutX="45.0" layoutY="14.0" prefHeight="40.0" prefWidth="117.0" text="Ingrese Nombre del Archivo" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" />
+            <TextField id="nombreArchivo" fx:id="nombreArchivo" alignment="TOP_LEFT" cache="true" cacheHint="SCALE" depthTest="ENABLE" layoutX="187.0" layoutY="34.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TextField>
+            <Button id="Agregar" fx:id="Agregar" layoutX="368.0" layoutY="34.0" mnemonicParsing="false" text="Aceptar" textFill="#231b1b">
+               <effect>
+                  <ColorAdjust brightness="-0.49" contrast="0.26" hue="0.19" saturation="-0.15" />
+               </effect></Button>
+            <TabPane cache="true" layoutX="11.0" layoutY="77.0" prefHeight="608.0" prefWidth="975.0">
+              <tabs>
+                <Tab id="VerArbol" fx:id="VerArbol" text="Ver Arbol">
+                  <content>
+                    <AnchorPane id="paneArbol" fx:id="paneArbol" blendMode="ADD" cache="true" cacheHint="QUALITY" depthTest="DISABLE" minHeight="0.0" minWidth="0.0" mouseTransparent="true" prefHeight="349.0" prefWidth="614.0">
+                           <children>
+                              <ScrollPane id="ventana1" layoutX="14.0" layoutY="14.0" prefHeight="545.0" prefWidth="900.0">
+                                <content>
+                                  <AnchorPane id="pagina1Ancla" minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="880.0">
+                                       <children>
+                                          <Separator layoutX="57.0" layoutY="12.0" prefWidth="200.0" />
+                                          <Label layoutX="102.0" layoutY="71.0" text="Cero Datos" />
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="VerArchivo" text="Ver Archivos">
+                  <content>
+                    <AnchorPane id="dataVm" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane id="ventana2" layoutX="14.0" layoutY="14.0" prefHeight="562.0" prefWidth="795.0" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab id="ventana3" text="Recorridos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="92.0" layoutY="70.0" text="Preorden" />
+                              <Label layoutX="92.0" layoutY="136.0" text="Inorden" />
+                              <Label layoutX="92.0" layoutY="207.0" text="Posorden" />
+                              <TextField id="preorden" layoutX="250.0" layoutY="66.0" prefHeight="26.0" prefWidth="574.0" />
+                              <TextField id="inorden" layoutX="251.0" layoutY="132.0" prefHeight="26.0" prefWidth="575.0" />
+                              <TextField id="posorden" layoutX="252.0" layoutY="203.0" prefHeight="26.0" prefWidth="575.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab id="ventana4" text="Informacion del Arbol">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="231.0" prefWidth="538.0">
+                           <children>
+                              <Label id="mensajeNum" layoutX="59.0" layoutY="21.0" text="Numero de archivos (nodos)" />
+                              <Label id="MensajeRaiz" layoutX="59.0" layoutY="54.0" text="Nodo raiz. " />
+                              <Label id="MensajesHojas" layoutX="59.0" layoutY="93.0" text="Maximo" />
+                              <Separator layoutX="242.0" layoutY="1.0" orientation="VERTICAL" prefHeight="167.0" prefWidth="6.0" />
+                              <TextField id="NumNodos" layoutX="262.0" layoutY="17.0" />
+                              <TextField id="NodoRaiz" layoutX="263.0" layoutY="59.0" />
+                              <TextField id="NodosHoja" layoutX="263.0" layoutY="98.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab id="vantana5" text="Modicar Nodo">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField id="AModificar" cache="true" layoutX="152.0" layoutY="35.0" text="Nombre" />
+                              <TextField id="Modificado" cache="true" layoutX="152.0" layoutY="86.0" text="Nombre2" />
+                              <Button id="Cambiar" contentDisplay="BOTTOM" layoutX="404.0" layoutY="61.0" mnemonicParsing="false" text="Cambiar" textAlignment="CENTER">
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <effect>
+                                    <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="0.0" specularExponent="11.19">
+                                       <light>
+                                          <Light.Distant azimuth="182.48" elevation="86.7">
+                                             <color>
+                                                <Color red="0.8842105269432068" green="0.07532163709402084" blue="0.07532163709402084" />
+                                             </color>
+                                          </Light.Distant>
+                                       </light>
+                                    </Lighting>
+                                 </effect></Button>
+                              <Label layoutX="25.0" layoutY="39.0" text="Archivo a Modificar" />
+                              <Label layoutX="25.0" layoutY="90.0" text="Nombre nuevo" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+      </children>
+         <effect>
+            <DisplacementMap>
+               <mapData>
+                  <FloatMap />
+               </mapData>
+            </DisplacementMap>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor>
+    </AnchorPane>
+  </children>
+</VBox>
